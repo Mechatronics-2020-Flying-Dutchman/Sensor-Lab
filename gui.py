@@ -12,10 +12,10 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('gui.ui', self)
 
         # configure and initialize serial port
-        # self.ser = serial.Serial()
-        # self.ser.baudrate = SERIAL_BAUD
-        # self.ser.port = SERIAL_PORT
-        # self.ser.open()
+        self.ser = serial.Serial()
+        self.ser.baudrate = SERIAL_BAUD
+        self.ser.port = SERIAL_PORT
+        self.ser.open()
 
         # lookup text widgets on gui
         self.ir_widget = self.findChild(QtWidgets.QLabel, 'ir_value')
@@ -36,8 +36,8 @@ class Ui(QtWidgets.QMainWindow):
         return vals
     
     def update_vals(self):
-        # msg = self.ser.readline()
-        msg = "42.251,52.32,5261\n" # temporary test message
+        msg = self.ser.readline()
+        # msg = "42.251,52.32,5261\n" # temporary test message
         vals = self.parse_message(msg)
 
         self.ir_widget.setText(str(vals[0]))
