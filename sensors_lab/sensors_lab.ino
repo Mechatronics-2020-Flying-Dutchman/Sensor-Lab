@@ -21,7 +21,8 @@ long duration, USdistance_cm;
 
 // Create a new instance of the SharpIR class:
 SharpIR IRsensor = SharpIR(IRPin, model);
-
+int val = 0;
+float k = 0.1;
 void setup() {
   // Begin serial communication at a baudrate of 9600:
   Serial.begin(9600);
@@ -30,6 +31,8 @@ void setup() {
   pinMode(redLED, OUTPUT);
   pinMode(greenLED, OUTPUT);
 //  pinMode(13,OUTPUT);
+
+
 }
 
 void loop() {
@@ -46,17 +49,21 @@ void loop() {
   USdistance_cm = microsecondsToCentimeters(duration);
      
   // Print the measured distance to the serial monitor:
-  Serial.print("Set Distance: ");
-  Serial.print(setDist);
-  Serial.println(" cm");
-  Serial.print("IR distance: ");
+  
+//  Serial.print("Set Distance: ");
+  
+//  Serial.println(" cm");
+//  Serial.print("IR distance: ");
   Serial.print(IRdistance_cm);
-  Serial.println(" cm");
-  Serial.print("Ultrasonic distance: ");
+  Serial.print(",");
+//  Serial.println(" cm");
+//  Serial.print("Ultrasonic distance: ");
   Serial.print(USdistance_cm);
-  Serial.println(" cm");
-  Serial.println();
-  Serial.println();
+  Serial.print(",");
+//  Serial.println(" cm");
+  Serial.println(setDist);
+//  Serial.println();
+//  Serial.println();
 
   int USDiff = abs(setDist - USdistance_cm);
   int IRDiff = abs(setDist - IRdistance_cm);
@@ -85,7 +92,6 @@ void loop() {
     digitalWrite(redLED,LOW);
   }
     
-  delay(1000);
 }
 
 long microsecondsToCentimeters(long microseconds) {

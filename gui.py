@@ -3,8 +3,8 @@ import serial
 import sys
 
 # serial port globals
-SERIAL_PORT = 'COM1'
-SERIAL_BAUD = 19200
+SERIAL_PORT = 'COM6'
+SERIAL_BAUD = 9600
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
@@ -38,7 +38,10 @@ class Ui(QtWidgets.QMainWindow):
     def update_vals(self):
         msg = self.ser.readline()
         # msg = "42.251,52.32,5261\n" # temporary test message
-        vals = self.parse_message(msg)
+        parsed = msg.decode("utf-8").replace("\r\n", "\n")
+        
+        vals = self.parse_message(parsed)
+        
 
         self.ir_widget.setText(str(vals[0]))
         self.us_widget.setText(str(vals[1]))
