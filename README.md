@@ -1,7 +1,7 @@
 # Sensor Lab
 
 ## Description
-This repository contains our code for Sensor Lab for Mechatronics Design 2020. For this lab, we are integrating three sensors: an IR distance sensor, an Ultrasonic distance sensor, and a potentiometer. Our demonstration shows a system in which the potentiometer will alter a threshold distance in which the average of the two distance sensors must be under. Meeting this distance constraint will blink the internal LED on an Arduino Uno (Pin 13).
+This repository contains our code for Sensor Lab for Mechatronics Design 2020. For this lab, we are integrating three sensors: an IR distance sensor, an Ultrasonic distance sensor, and a potentiometer. Our demonstration shows a system in which the potentiometer will alter a threshold distance in which the two distance sensors must be under. Meeting this distance constraint will turn on a red LED and green LED for the IR sensor and Ultrasonic sensor respectively.
 
 ## Installation
 
